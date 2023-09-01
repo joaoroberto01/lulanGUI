@@ -34,18 +34,7 @@
 
 
   <script src="../node_modules/monaco-editor/min/vs/loader.js"></script>
-  <script>
-    require.config({ paths: { vs: '../node_modules/monaco-editor/min/vs' } });
-
-    require(['vs/editor/editor.main'], function () {
-      const editor = monaco.editor.create(document.getElementById('editor-container'), {
-        value: ['function x() {', '\tconsole.log("Hello world!");', '}'].join('\n'),
-        language: 'javascript',
-        automaticLayout: true
-
-      });
-    });
-  </script>
+  <script src="monaco.js"></script>
 </body>
 
 </html>
