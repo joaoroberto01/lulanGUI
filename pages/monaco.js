@@ -21,11 +21,11 @@ require(['vs/editor/editor.main'], function () {
       [/[A-Z][\w\$]*/, 'type.identifier' ],  // to show class names nicely
 
       [/\d+/, 'numero'],
-      [/{/, 'comment', '@comment'],
+      [/{/, 'comentario', '@comment'],
     ],
 
     comment: [
-      [/}/, 'comment', '@pop'], [/./, 'comment.content']
+      [/}/, 'comentario', '@pop'], [/./, 'comentario.content']
     ],
 
     whitespace: [
@@ -43,9 +43,9 @@ require(['vs/editor/editor.main'], function () {
       { token: "tipo", foreground: "b99ddb" },
       { token: "funcao", foreground: "47a6c3" },
       { token: "numero", foreground: "d4c277" },
-      // { token: "comentario", foreground: "73808b", fontStyle: "bold" },
-      { token: "comentario", foreground: "ff0000", fontStyle: "bold" },
-      { token: "comment", foreground: "00cc00", fontStyle: "bold" },
+       { token: "comentario", foreground: "73808b", fontStyle: "bold" },
+      // { token: "comentario", foreground: "ff0000", fontStyle: "bold" },
+      //{ token: "comment", foreground: "00cc00", fontStyle: "bold" },
     ],
     colors: {},
   });
