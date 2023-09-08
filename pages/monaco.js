@@ -120,9 +120,6 @@ require(['vs/editor/editor.main'], function () {
   // {
   //   value: ['function x() {', '\tconsole.log("Hello world!");', '}'].join('\n'),
   //   language: 'javascript',
-    
-
-
-
   // }
 });
+
