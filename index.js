@@ -8,6 +8,8 @@ const createWindow = () => {
         width: 800,
         height: 600,
         icon: nativeImage.createFromPath(path.join(__dirname, 'app.png')),
+		autoHideMenuBar: true,
+        
         webPreferences: {
             nodeIntegration: true,
             preload: path.join(__dirname, 'preload.js')

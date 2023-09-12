@@ -1,5 +1,6 @@
 const fs = require ('fs');
-const { contextBridge } = require('electron');
+const { contextBridge, dialog } = require('electron');
+
 
 contextBridge.exposeInMainWorld('fileManager', {
     read: (path) => {
@@ -11,6 +12,21 @@ contextBridge.exposeInMainWorld('fileManager', {
         return fs.writeFileSync(path, content);
     }
 })
+
+contextBridge.exposeInMainWorld('filePicker', {
+    open: () => {
+        dialog.showOpenDialog({
+            properties: ['openFile', 'multiSelections']
+        }, function (files) {
+            if (files !== undefined) {
+                // handle files
+            }
+        });
+    },
+
+    
+})
+
 
 
 

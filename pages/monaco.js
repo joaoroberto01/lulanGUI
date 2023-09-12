@@ -116,7 +116,7 @@ require(['vs/editor/editor.main'], function () {
     language: 'lulang',
     theme: 'lulang-ptheme'
   }; 
-  const editor = monaco.editor.create(document.getElementById('editor-container'), options);
+  const editor = monaco.editor.create(document.getElementById('editor'), options);
   // {
   //   value: ['function x() {', '\tconsole.log("Hello world!");', '}'].join('\n'),
   //   language: 'javascript',
