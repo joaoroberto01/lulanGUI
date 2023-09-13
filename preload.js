@@ -1,8 +1,10 @@
 const fs = require ('fs');
-const { contextBridge, dialog } = require('electron');
+const { contextBridge, ipcRenderer } = require('electron');
 
 
 contextBridge.exposeInMainWorld('fileManager', {
+    open: () => ipcRenderer.invoke('dialog:open'),
+
     read: (path) => {
         return fs.readFileSync(path, {encoding: 'utf-8'})
     },
@@ -12,21 +14,6 @@ contextBridge.exposeInMainWorld('fileManager', {
         return fs.writeFileSync(path, content);
     }
 })
-
-contextBridge.exposeInMainWorld('filePicker', {
-    open: () => {
-        dialog.showOpenDialog({
-            properties: ['openFile', 'multiSelections']
-        }, function (files) {
-            if (files !== undefined) {
-                // handle files
-            }
-        });
-    },
-
-    
-})
-
 
 
 
