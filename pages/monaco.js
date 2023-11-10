@@ -1,7 +1,7 @@
 require.config({ paths: { vs: '../node_modules/monaco-editor/min/vs' } });
 
 require(['vs/editor/editor.main'], function () {
-  monaco.languages.register({ id: "lulang" });
+monaco.languages.register({ id: "lulang" });
 
   monaco.languages.setMonarchTokensProvider("lulang", {
     keywords: [
@@ -92,34 +92,7 @@ require(['vs/editor/editor.main'], function () {
       return { suggestions: suggestions };
     },
   });
-  const options = {
-    value: ['var i, j: inteiro;\n{ isso é um comentario }', 'funcao abc'].join('\n'),
-    //autoIndent: 'full',
-    //contextmenu: true,
-    //fontFamily: 'monospace',
-    fontSize: 13,
-    //lineHeight: 24,
-    hideCursorInOverviewRuler: true,
-    matchBrackets: 'always',
-    minimap: {
-      enabled: true,
-    },
-    scrollbar: {
-      horizontalSliderSize: 4,
-      verticalSliderSize: 18,
-    },
-    selectOnLineNumbers: true,
-    roundedSelection: false,
-    readOnly: false,
-    cursorStyle: 'line',
-    automaticLayout: true,
-    language: 'lulang',
-    theme: 'lulang-ptheme'
-  }; 
-  const editor = monaco.editor.create(document.getElementById('editor'), options);
-  // {
-  //   value: ['function x() {', '\tconsole.log("Hello world!");', '}'].join('\n'),
-  //   language: 'javascript',
-  // }
+
+  onEditorReady(monaco.editor);
 });
 

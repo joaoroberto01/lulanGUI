@@ -2,54 +2,43 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
-  <title>Hello World!</title>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
+    <title>Hello World!</title>
 
-  <link rel="stylesheet" href="main-styles.css">
-  <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
 </head>
 
 <body>
-  <div class="user-actions w-100 d-flex justify-content-between align-items-center">
+<div class="user-actions w-100 d-flex justify-content-between align-items-center">
     <div class="user-buttons">
-      <button class="select-file" id="filePicker">SELECIONAR ARQUIVO</button>
-      <span class="m-0">caminho do arquivo</span>
+        <button class="select-file" id="filePicker" onclick="openFile()">SELECIONAR ARQUIVO</button>
+        <span id="path-indicator">Nenhum arquivo selecionado</span>
     </div>
 
-
-    <div class="">
-          SALVAR
-      </button>
-      <button>
-          COMPILAR
-      </button>
+    <div>
+        <button onclick="writeFile()">SALVAR</button>
+        <button onclick="compile()">COMPILAR</button>
     </div>
-  </div>
-
-  
+</div>
 
 
-  
-  <div class="editor-container d-flex justify-content-center align-items-center">
-    <div id="editor">
-
-    </div>
-  </div>
+<div class="editor-container d-flex justify-content-center align-items-center">
+    <div id="editor"></div>
+</div>
 
 
-  <div class="error-container w-100 d-flex justify-content-center align-items-center">
-    <div class="error-log">
-      
-    </div>
-
-  </div>
+<div class="log-container w-100 d-flex flex-column justify-content-center align-items-center">
+    <div class="error-log"></div>
+    <div class="message-log"></div>
+</div>
 
 
-  <script src="../node_modules/monaco-editor/min/vs/loader.js"></script>
-  <script src="monaco.js"></script>
-  <script src="main.js"></script>
+<script src="../node_modules/monaco-editor/min/vs/loader.js"></script>
+<script src="monaco.js"></script>
+<script src="main.js"></script>
 
 </body>
 
