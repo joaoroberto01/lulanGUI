@@ -1,19 +1,19 @@
-const fs = require ('fs');
 const { contextBridge, ipcRenderer } = require('electron');
 
 
 contextBridge.exposeInMainWorld('fileManager', {
     open: () => ipcRenderer.invoke('dialog:open'),
 
-    read: (path) => {
-        return fs.readFileSync(path, {encoding: 'utf-8'})
-    },
+    read: (path) => ipcRenderer.invoke('fs:read', path),
 
-    write: (path, content) => {
-
-        return fs.writeFileSync(path, content);
-    }
+    write: (path, content) => ipcRenderer.invoke('fs:write', path, content)
 })
+
+contextBridge.exposeInMainWorld('compiler', {
+    compile: (path) => ipcRenderer.invoke('compiler:compile', path),
+//    onMessage: (callback) => ipcRenderer.on('compiler:on-message', callback),
+//    onError: (callback) => ipcRenderer.on('compiler:on-error', callback)
+});
 
 
 
