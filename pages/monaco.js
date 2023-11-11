@@ -3,10 +3,22 @@ require.config({ paths: { vs: '../node_modules/monaco-editor/min/vs' } });
 require(['vs/editor/editor.main'], function () {
 monaco.languages.register({ id: "lulang" });
 
+
   monaco.languages.setMonarchTokensProvider("lulang", {
     keywords: [
-      'var', 'se', 'entao', 'funcao', 'procedimento'
+      'programa', 'var', 'se', 'entao', 'senao', 'enquanto', 'faca', 'inicio', 'fim', 'fim;', 'fim.',
+      'funcao', 'procedimento'
     ],
+
+    functions: [
+      'leia', 'escreva'
+    ],
+
+    namedOperators: ["div", "e", "ou", "nao"],
+
+    operators: ["+", "-", "*", ">", ">=", "<", "<=", "=", "!="],
+
+    booleans: ['verdadeiro', 'falso'],
 
     typeKeywords: [
       'booleano', 'inteiro'
@@ -16,11 +28,14 @@ monaco.languages.register({ id: "lulang" });
     root: [
       // identifiers and keywords
       [/[a-z_$][\w$]*/, { cases: { '@typeKeywords': 'tipo',
+                                   '@functions': 'comandos',
+                                   '@booleans': 'valor',
+                                   '@namedOperators': 'operador',
                                    '@keywords': 'reservado',
                                    '@default': 'identificador' } }],
-      [/[A-Z][\w\$]*/, 'type.identifier' ],  // to show class names nicely
-
-      [/\d+/, 'numero'],
+      [/(\+|\-|\*|div|>=?|<=?|=|!=)/, 'operador'],
+      [/(:=)/, 'atribuicao'],
+      [/\d+/, 'valor'],
       [/{/, 'comentario', '@comment'],
     ],
 
@@ -40,9 +55,13 @@ monaco.languages.register({ id: "lulang" });
     rules: [
       { token: "reservado", foreground: "fe70a6" },
       { token: "keyword", foreground: "fe70a6" },
+      { token: "operador", foreground: "FC6A5D" },
+      { token: "atribuicao", foreground: "FD8F3F" },
+      { token: "comandos", foreground: "5DD8FF" },
+//      { token: "comandos", foreground: "B282EB" },
       { token: "tipo", foreground: "b99ddb" },
       { token: "funcao", foreground: "47a6c3" },
-      { token: "numero", foreground: "d4c277" },
+      { token: "valor", foreground: "d4c277" },
        { token: "comentario", foreground: "73808b", fontStyle: "bold" },
       // { token: "comentario", foreground: "ff0000", fontStyle: "bold" },
       //{ token: "comment", foreground: "00cc00", fontStyle: "bold" },
@@ -93,6 +112,6 @@ monaco.languages.register({ id: "lulang" });
     },
   });
 
-  onEditorReady(monaco.editor);
+  onEditorReady();
 });
 

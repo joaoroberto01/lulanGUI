@@ -29,7 +29,13 @@ app.whenReady().then(() => {
     createWindow();
 
     ipcMain.handle('dialog:open', async () => {
-        return dialog.showOpenDialogSync(window)
+        const options = {
+            properties: ['openFile']
+        }
+        const paths = dialog.showOpenDialogSync(window);
+        if (paths) {
+            return paths[0];
+        }
     });
 
     ipcMain.handle('fs:read', (event, path) => {
