@@ -19,9 +19,9 @@ async function openFile() {
    showPath(filePath);
 
    const content = await window.fileManager.read(filePath);
-   console.log(content);
 
    editor.getModel().setValue(content);
+   showErrors()
 }
 
 async function writeFile() {
@@ -42,7 +42,6 @@ async function compile() {
 
    const result = await window.compiler.compile(filePath);
    messageLog.innerText = result.message;
-   errorLog.innerText = result.error;
 
    showErrors(result.error);
 
@@ -59,7 +58,7 @@ async function compile() {
    });
 }
 
-function showErrors(errorMessage) {
+function showErrors(errorMessage = null) {
    let markers = [];
 
    if (errorMessage) {
@@ -77,6 +76,7 @@ function showErrors(errorMessage) {
       editor.revealPositionInCenter({ lineNumber: error.line || 0, column: error.column || 0 });
    }
    monaco.editor.setModelMarkers(editor.getModel(), 'owner', markers);
+   errorLog.innerText = errorMessage;
 }
 
 function parseError(error) {
