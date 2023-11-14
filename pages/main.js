@@ -1,12 +1,10 @@
 const errorLog = document.querySelector('.error-log');
 const messageLog = document.querySelector('.message-log');
-const pathIndicator = document.getElementById('path-indicator');
 
 let filePath;
 let editor;
 
 function showPath(path) {
-   pathIndicator.innerText = path;
    document.title = path;
 }
 
