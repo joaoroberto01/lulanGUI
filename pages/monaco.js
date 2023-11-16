@@ -86,6 +86,21 @@ monaco.languages.register({ id: "lulang" });
           range: range,
         },
         {
+          label: "programa",
+          kind: monaco.languages.CompletionItemKind.Snippet,
+          insertText: [
+            "programa ${0:nomeprograma};",
+            "${1:variaveis}",
+            "inicio",
+            "\t$2",
+            "fim."
+          ].join("\n"),
+          insertTextRules:
+            monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+          documentation: "Exemplo de programa",
+          range: range,
+        },
+        {
           label: "var",
           kind: monaco.languages.CompletionItemKind.Keyword,
           insertText: "var ${1:nome}: ${2:inteiro|booleano};",
@@ -105,6 +120,21 @@ monaco.languages.register({ id: "lulang" });
             monaco.languages.CompletionItemInsertTextRule
               .InsertAsSnippet,
           documentation: "Comando \"se\"",
+          range: range,
+        },
+        {
+          label: "enquanto",
+          kind: monaco.languages.CompletionItemKind.Snippet,
+          insertText: [
+            "enquanto ${1:condição} faca",
+            "inicio",
+            "\t$0",
+            "fim;"
+          ].join("\n"),
+          insertTextRules:
+            monaco.languages.CompletionItemInsertTextRule
+              .InsertAsSnippet,
+          documentation: "Comando \"enquanto\"",
           range: range,
         },
       ];
