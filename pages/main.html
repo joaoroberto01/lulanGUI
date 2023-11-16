@@ -6,20 +6,21 @@
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
     <title>Compilador</title>
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+
 </head>
 
 <body>
 <div class="user-actions w-100 d-flex justify-content-between align-items-center">
     <div class="user-buttons">
-        <button class="select-file" id="filePicker" onclick="openFile()">SELECIONAR ARQUIVO</button>
-        <span id="path-indicator">Nenhum arquivo selecionado</span>
+        <button class="btn btn-outline-warning select-file" id="filePicker" onclick="openFile()"><span class="material-icons">folder</span>Selecionar arquivo</button>
     </div>
 
-    <div>
-        <button onclick="writeFile()">SALVAR</button>
-        <button onclick="compile()">COMPILAR</button>
+    <div class="d-flex gap-4">
+        <button class="save-btn btn btn-outline-primary" onclick="writeFile()"><span class="material-icons">save</span>Salvar</button>
+        <button class="compile-btn btn btn-outline-success" onclick="compile()"><span class="material-icons">hardware</span>Compilar</button>
     </div>
 </div>
 

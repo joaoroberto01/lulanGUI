@@ -12,8 +12,10 @@ let window;
 //}
 const createWindow = () => {
     window = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 900,
+        height: 700,
+        minWidth: 900,
+        minHeight: 700,
         icon: nativeImage.createFromPath(path.join(__dirname, 'app.png')),
         autoHideMenuBar: true,
         
