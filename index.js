@@ -32,9 +32,13 @@ app.whenReady().then(() => {
 
     ipcMain.handle('dialog:open', async () => {
         const options = {
-            properties: ['openFile']
+            properties: ['openFile'],
+            "filters": [{
+                "name": "Arquivos de texto",
+                "extensions": ["txt", "ll", ""]
+            }]
         }
-        const paths = dialog.showOpenDialogSync(window);
+        const paths = dialog.showOpenDialogSync(window, options);
         if (paths) {
             return paths[0];
         }
@@ -61,21 +65,5 @@ app.whenReady().then(() => {
             message: lulangCompiler.stdout.toString(),
             error: lulangCompiler.stderr.toString()
         }
-//        if (lulangCompiler.stderr) {
-//            return lulangCompiler.stderr.toString();
-//        }
-//
-//        return lulangCompiler.stdout.toString();
-
-        //STREAM FOR VIRTUAL MACHINE
-//        lulangCompiler.stdout.on('data', (data) => {
-//            console.log(data)
-//            window.webContents.send('compiler:on-message', data.toString());
-//        });
-//
-//        lulangCompiler.stderr.on('data', (data) => {
-//            console.log(data.toString())
-//            window.webContents.send('compiler:on-error', data.toString());
-//        });
     });
 })
