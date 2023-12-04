@@ -1,24 +1,55 @@
 {
   "name": "lulangui",
+  "productName": "LulanGUI Compiler",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build:mac": "electron-builder build --mac --arm64",
+    "build:win": "electron-builder build --win --x64",
+    "build:linux": "electron-builder build --linux --x64"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/joaoroberto01/lulanGUI.git"
   },
-  "author": "",
+  "author": "João Roberto Gil Cavina <compiler@lulang.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/joaoroberto01/lulanGUI/issues"
   },
   "homepage": "https://github.com/joaoroberto01/lulanGUI#readme",
-  "dependencies": {
+  "devDependencies": {
     "electron": "^26.6.1",
     "electron-reloader": "^1.2.3",
+    "electron-builder": "^24.6.4",
     "monaco-editor": "^0.41.0"
+  },
+  "build": {
+    "extraResources": ["extras/**"],
+    "appId": "com.lulangui.compiler",
+    "mac": {
+      "target": [
+        "dmg"
+      ]
+    },
+    "dmg": {
+      "title": "LulanGUI VM Installer",
+      "icon": "app.icns"
+    },
+    "win": {
+      "verifyUpdateCodeSignature": false,
+      "target": [
+        "nsis",
+        "zip",
+        "portable"
+      ]
+    },
+    "linux": {
+      "target": [
+        "deb"
+      ]
+    }
   }
 }

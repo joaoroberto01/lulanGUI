@@ -59,7 +59,9 @@ app.whenReady().then(() => {
     })
 
     ipcMain.handle('compiler:compile', async (event, path) => {
-        let lulangCompiler = spawnSync('java', ['-jar', 'compiler.jar', path]);
+        let basePath = app.isPackaged ? process.resourcesPath + '/' : '';
+
+        let lulangCompiler = spawnSync('java', ['-jar', `${basePath}extras/compiler.jar`, path]);
 
         return {
             message: lulangCompiler.stdout.toString(),
