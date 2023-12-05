@@ -50,6 +50,9 @@ html, body {
 
 .error-log {
     color: red;
+}
+
+.log {
     border: 1px solid #2d383e;
     border-radius: 5px;
     width: 95%;
